@@ -11,17 +11,19 @@
     View console log to see project.
 
     <script>
-        console.log("Hello World!")
         
         let randomNumber = Math.floor(Math.random() * 100) +1; //Generates a random number which will be send to function
         
+        // Function that takes the randomly generated number and divides it by 3. 
+        // The remainder of that number will return a 'Paper', 'Rock', or 'Scissor'
         function getComputerChoice(numberCheck){
-            console.log(numberCheck);
-            //let remainder = numberCheck % 3;
-            if (numberCheck % 3 == 0){
+            console.log("Random number is " + numberCheck);
+            let remainder = numberCheck % 3;
+            console.log("Remainder of " + remainder);
+            if (remainder == 1){
                 return 'Paper';
             }
-            else if (numberCheck % 3 == 1){
+            else if (remainder == 2){
                 return 'Rock';
             }
             else {
@@ -32,7 +34,7 @@
 
         let computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on remainder
         console.log(computerSelection);
-        // Send random number to getCompCho Function below
+        
 
     </script>
 </body>
