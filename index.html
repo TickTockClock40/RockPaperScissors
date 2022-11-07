@@ -12,6 +12,28 @@
 
     <script>
         console.log("Hello World!")
+        
+        let randomNumber = Math.floor(Math.random() * 100) +1; //Generates a random number which will be send to function
+        
+        function getComputerChoice(numberCheck){
+            console.log(numberCheck);
+            //let remainder = numberCheck % 3;
+            if (numberCheck % 3 == 0){
+                return 'Paper';
+            }
+            else if (numberCheck % 3 == 1){
+                return 'Rock';
+            }
+            else {
+                return 'Scissor';
+            }
+
+        }
+
+        let computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on remainder
+        console.log(computerSelection);
+        // Send random number to getCompCho Function below
+
     </script>
 </body>
 </html>
