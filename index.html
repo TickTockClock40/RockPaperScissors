@@ -7,7 +7,7 @@
     <title>Rock, Paper, Sissors</title>
 </head>
 <body>
-    <h1>Hello World Wide Web!</h1>
+    <h1>Paper, Rock, Scissor</h1>
     View console log to see project.
 
     <script>
@@ -21,19 +21,50 @@
             let remainder = numberCheck % 3;
             console.log("Remainder of " + remainder);
             if (remainder == 1){
-                return 'Paper';
+                return 'paper';
             }
             else if (remainder == 2){
-                return 'Rock';
+                return 'rock';
             }
             else {
-                return 'Scissor';
+                return 'scissor';
             }
 
         }
+        
+        function playRound(playerSelection, computerSelection){
+            const playerSelectionCompare = playerSelection.toLowerCase();
+            //console.log(playerSelectionCompare);
+            if (playerSelectionCompare == computerSelection){
+                return "You both chose " + playerSelectionCompare + ". It is a tie.";
+            }
+            
+            // Winning Combinations
+            else if ((playerSelectionCompare == "rock"  &&  computerSelection == "scissor") || 
+                     (playerSelectionCompare == "paper"  &&  computerSelection == "rock") ||
+                     (playerSelectionCompare == "scissor"  &&  computerSelection == "paper")){
+                return "You Win, " + playerSelectionCompare + " beats " + computerSelection + "!";
+            }
 
-        let computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on remainder
-        console.log(computerSelection);
+            // Loosing Combinations
+            else if ((playerSelectionCompare == "rock"  &&  computerSelection == "paper") || 
+                     (playerSelectionCompare == "paper"  &&  computerSelection == "scissor") ||
+                     (playerSelectionCompare == "scissor"  &&  computerSelection == "rock")){
+                return "You lose, " + computerSelection + " beats " + playerSelectionCompare + "!";
+            }
+            else {
+                return "Invalid Input. Check your spelling. Valid values are ROCK, PAPER, or SCISSOR.";
+            }
+
+
+        }
+
+    
+        const playerSelection = "scissors"; // Change Player Selection Here
+        const computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on remainder
+        console.log("Computer selected " + computerSelection);
+        console.log("User Selected " + playerSelection);
+        console.log(playRound(playerSelection, computerSelection));
         
 
     </script>
