@@ -76,8 +76,19 @@
             }    
         }
         game();
-        
+        function resultsMessage(){
+                if (winCount > lossCount){
+                    console.log("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
+                }
+                else if (winCount < lossCount){
+                    console.log("You lose. You only had " + winCount + " wins and the computer had " + lossCount + " wins");
+                }
+                else{
+                    console.log("You tied. You each had " + winCount + " wins.")
+                }
+        }
         console.log("You have " + winCount + " Wins and "+ lossCount + " losses.");
+        resultsMessage();
         //const playerSelection = "scissors"; // Change Player Selection Here
 
         
