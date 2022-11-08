@@ -45,7 +45,7 @@
                      (playerSelectionCompare == "paper"  &&  computerSelection == "rock") ||
                      (playerSelectionCompare == "scissor"  &&  computerSelection == "paper")){
                 winCount++;
-                console.log(winCount);
+                console.log("Win Count is " + winCount);
                 return "You Win, " + playerSelectionCompare + " beats " + computerSelection + "!";
             }
 
@@ -54,7 +54,7 @@
                      (playerSelectionCompare == "paper"  &&  computerSelection == "scissor") ||
                      (playerSelectionCompare == "scissor"  &&  computerSelection == "rock")){
                 lossCount++;
-                console.log(lossCount);
+                console.log("Loss Count is " + lossCount);
                 return "You lose, " + computerSelection + " beats " + playerSelectionCompare + "!";
             }
             else {
@@ -76,7 +76,7 @@
             }    
         }
         game();
-        function resultsMessage(){
+        //function resultsMessage(){
                 if (winCount > lossCount){
                     console.log("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
                 }
@@ -86,9 +86,9 @@
                 else{
                     console.log("You tied. You each had " + winCount + " wins.")
                 }
-        }
+        //}
         console.log("You have " + winCount + " Wins and "+ lossCount + " losses.");
-        resultsMessage();
+        //resultsMessage();
         //const playerSelection = "scissors"; // Change Player Selection Here
 
         
