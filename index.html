@@ -34,19 +34,16 @@
         
         btnRock.addEventListener('click', () => {
             playerSelectionButton = 'rock';
-            // console.log(playerSelectionButton);
             game(playerSelectionButton);
         });
 
         btnPaper.addEventListener('click', () => {
             playerSelectionButton = 'paper';
-            // console.log(playerSelectionButton);
             game(playerSelectionButton);
         });
 
         btnScissor.addEventListener('click', () => {
             playerSelectionButton = 'scissor';
-            // console.log(playerSelectionButton);
             game(playerSelectionButton);
         });
         
@@ -65,8 +62,7 @@
         }
         
         function playRound(playerSelection, computerSelection){
-            const playerSelectionCompare = playerSelection//.toLowerCase();
-            ;
+            const playerSelectionCompare = playerSelection;
             if (playerSelectionCompare == computerSelection){
                 return "You both chose " + playerSelectionCompare + ". It is a tie.";
             }
@@ -91,32 +87,21 @@
                 console.log("Loss Count is " + lossCount);
                 return "You lose, " + computerSelection + " beats " + playerSelectionCompare + "!";
             }
-            else {
-                return "Invalid Input. Check your spelling. Valid values are ROCK, PAPER, or SCISSOR.";
-            }
-
-
         }
 
-        function game(buttonSelected){
+        function game(playerSelection){
              if ((winCount < 5) && (lossCount < 5)){
-                let playerSelection = buttonSelected;
-                
-                let randomNumber = Math.floor(Math.random() * 3) +1; //Generates a random number which will be send to function
+                let randomNumber = Math.floor(Math.random() * 3) +1; 
                 const computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on 1, 2, or 3
                 console.log("Computer selected " + computerSelection);
                 console.log("User Selected " + playerSelection);
-                //console.log(playRound(playerSelection, computerSelection));
                 currentGame.innerText = playRound(playerSelection, computerSelection);
                 console.log(winCount + " " + lossCount);
                 if ((winCount == 5) || (lossCount == 5)){resultsMessage()};
              }
              else {resultsMessage()};
-                //playRound(playerSelection);
-            }    
-        //}
-        //console.log(playerSelectionButton);
-        //game();
+                }    
+
         
         function resultsMessage(){
                 if (winCount > lossCount){
@@ -131,13 +116,6 @@
                     console.log("You tied. You each had " + winCount + " wins.")
                 }
             }
-        
-        // console.log("You have " + winCount + " Wins and "+ lossCount + " losses.");
-        //resultsMessage();
-        //const playerSelection = "scissors"; // Change Player Selection Here
-
-        
-        
 
     </script>
 </body>
