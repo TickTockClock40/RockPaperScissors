@@ -11,50 +11,50 @@
     <button class="button btnRock">Rock</button>
     <button class="button btnPaper">Paper</button>
     <button class="button btnScissor">Scissor</button>
+    <div class = "currentGame"></div>
+    <div>
+        <p>Win Totals</p>
+        <div class = computerTally> Computer: 0</div>
+        <div class = userTally>Player: 0</div>
+        <p class = 'finalResults'></p>
+    </div>
 
     <script>
         let playerSelectionButton ='Selection';
         const btnRock = document.querySelector('.btnRock');
         const btnPaper = document.querySelector('.btnPaper');
         const btnScissor = document.querySelector('.btnScissor');
-        const buttons = document.querySelectorAll('button');
-
-        // buttons.forEach(button => {
-        //     button.addEventListener('click', e=>{
-        //         console.log(e.target);
-        //     });
-        // });
-
-        btnRock.addEventListener('click', () => {
-            playerSelectionButton = 'Rock';
-            // console.log(playerSelectionButton);
-            game(playerSelectionButton);
-        });
-
-        btnPaper.addEventListener('click', () => {
-            playerSelectionButton = 'Paper';
-            // console.log(playerSelectionButton);
-            game(playerSelectionButton);
-        });
-
-        btnScissor.addEventListener('click', () => {
-            playerSelectionButton = 'Scissor';
-            // console.log(playerSelectionButton);
-            game(playerSelectionButton);
-        });
-
-
-
-        //let randomNumber = Math.floor(Math.random() * 100) +1; //Generates a random number which will be send to function
+        const cpuTally = document.querySelector('.computerTally');
+        const userTally = document.querySelector('.userTally');
+        const currentGame = document.querySelector('.currentGame');
+        const finalResults = document.querySelector('.finalResults');
         let winCount = 0;
         let lossCount = 0;
 
-        // Function that takes the randomly generated number and divides it by 3. 
-        // The remainder of that number will return a 'Paper', 'Rock', or 'Scissor'
+
+        btnRock.addEventListener('click', () => {
+            playerSelectionButton = 'rock';
+            // console.log(playerSelectionButton);
+            game(playerSelectionButton);
+            return;
+        });
+
+        btnPaper.addEventListener('click', () => {
+            playerSelectionButton = 'paper';
+            // console.log(playerSelectionButton);
+            game(playerSelectionButton);
+            return;
+        });
+
+        btnScissor.addEventListener('click', () => {
+            playerSelectionButton = 'scissor';
+            // console.log(playerSelectionButton);
+            game(playerSelectionButton);
+            return;
+        });
+        
         function getComputerChoice(numberCheck){
             console.log("Random number is " + numberCheck);
-            //let remainder = numberCheck % 3;
-            //console.log("Remainder of " + remainder);
             if (numberCheck == 1){
                 return 'paper';
             }
@@ -79,7 +79,9 @@
                      (playerSelectionCompare == "paper"  &&  computerSelection == "rock") ||
                      (playerSelectionCompare == "scissor"  &&  computerSelection == "paper")){
                 winCount++;
+                userTally.innerText = 'Player: ' + winCount;            
                 console.log("Win Count is " + winCount);
+
                 return "You Win, " + playerSelectionCompare + " beats " + computerSelection + "!";
             }
 
@@ -88,6 +90,7 @@
                      (playerSelectionCompare == "paper"  &&  computerSelection == "scissor") ||
                      (playerSelectionCompare == "scissor"  &&  computerSelection == "rock")){
                 lossCount++;
+                cpuTally.innerText = "Computer: " + lossCount;
                 console.log("Loss Count is " + lossCount);
                 return "You lose, " + computerSelection + " beats " + playerSelectionCompare + "!";
             }
@@ -99,32 +102,38 @@
         }
 
         function game(buttonSelected){
-            // for (let i = 0; i < 5; i++){
+             //for (let i = 0; i < 5; i++){
                 let playerSelection = buttonSelected;
-                // let playerSelection = prompt ("Paper, Rock, or Scissors");
+                
                 let randomNumber = Math.floor(Math.random() * 3) +1; //Generates a random number which will be send to function
-                const computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on remainder
+                const computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on 1, 2, or 3
                 console.log("Computer selected " + computerSelection);
                 console.log("User Selected " + playerSelection);
-                console.log(playRound(playerSelection, computerSelection));
-                playRound(playerSelection);
+                //console.log(playRound(playerSelection, computerSelection));
+                currentGame.innerText = playRound(playerSelection, computerSelection);
+                console.log(winCount + " " + lossCount);
+                if ((winCount == 5) || (lossCount == 5)){resultsMessage()};
+                //playRound(playerSelection);
             }    
         //}
-        console.log(playerSelectionButton);
+        //console.log(playerSelectionButton);
         //game();
         
-        //function resultsMessage(){
+        function resultsMessage(){
                 if (winCount > lossCount){
                     console.log("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
+                    finalResults.innerText = ("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
                 }
                 else if (winCount < lossCount){
                     console.log("You lose. You only had " + winCount + " wins and the computer had " + lossCount + " wins");
+                    finalResults.innerText = ("You lose. You only had " + winCount + " wins and the computer had " + lossCount + " wins");
                 }
                 else{
                     console.log("You tied. You each had " + winCount + " wins.")
                 }
-        //}
-        console.log("You have " + winCount + " Wins and "+ lossCount + " losses.");
+            }
+        
+        // console.log("You have " + winCount + " Wins and "+ lossCount + " losses.");
         //resultsMessage();
         //const playerSelection = "scissors"; // Change Player Selection Here
 
