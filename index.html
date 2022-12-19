@@ -31,26 +31,23 @@
         let winCount = 0;
         let lossCount = 0;
 
-
+        
         btnRock.addEventListener('click', () => {
             playerSelectionButton = 'rock';
             // console.log(playerSelectionButton);
             game(playerSelectionButton);
-            return;
         });
 
         btnPaper.addEventListener('click', () => {
             playerSelectionButton = 'paper';
             // console.log(playerSelectionButton);
             game(playerSelectionButton);
-            return;
         });
 
         btnScissor.addEventListener('click', () => {
             playerSelectionButton = 'scissor';
             // console.log(playerSelectionButton);
             game(playerSelectionButton);
-            return;
         });
         
         function getComputerChoice(numberCheck){
@@ -102,7 +99,7 @@
         }
 
         function game(buttonSelected){
-             //for (let i = 0; i < 5; i++){
+             if ((winCount < 5) && (lossCount < 5)){
                 let playerSelection = buttonSelected;
                 
                 let randomNumber = Math.floor(Math.random() * 3) +1; //Generates a random number which will be send to function
@@ -113,6 +110,8 @@
                 currentGame.innerText = playRound(playerSelection, computerSelection);
                 console.log(winCount + " " + lossCount);
                 if ((winCount == 5) || (lossCount == 5)){resultsMessage()};
+             }
+             else {resultsMessage()};
                 //playRound(playerSelection);
             }    
         //}
@@ -122,11 +121,11 @@
         function resultsMessage(){
                 if (winCount > lossCount){
                     console.log("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
-                    finalResults.innerText = ("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
+                    finalResults.innerText = ("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s). Refresh the page to play again.");
                 }
                 else if (winCount < lossCount){
                     console.log("You lose. You only had " + winCount + " wins and the computer had " + lossCount + " wins");
-                    finalResults.innerText = ("You lose. You only had " + winCount + " wins and the computer had " + lossCount + " wins");
+                    finalResults.innerText = ("You lose. You only had " + winCount + " wins and the computer had " + lossCount + " wins. Refresh the page to play again.");
                 }
                 else{
                     console.log("You tied. You each had " + winCount + " wins.")
