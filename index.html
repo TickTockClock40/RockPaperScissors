@@ -4,27 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Sissors</title>
+    <title>Rock, Paper, Scissors</title>
 </head>
 <body>
     <h1>Paper, Rock, Scissor</h1>
-    View console log to see project.
+    <button class="button btnRock">Rock</button>
+    <button class="button btnPaper">Paper</button>
+    <button class="button btnScissor">Scissor</button>
 
     <script>
-        
+        let playerSelectionButton ='Selection';
+        const btnRock = document.querySelector('.btnRock');
+        const btnPaper = document.querySelector('.btnPaper');
+        const btnScissor = document.querySelector('.btnScissor');
+        const buttons = document.querySelectorAll('button');
+
+        // buttons.forEach(button => {
+        //     button.addEventListener('click', e=>{
+        //         console.log(e.target);
+        //     });
+        // });
+
+        btnRock.addEventListener('click', () => {
+            playerSelectionButton = 'Rock';
+            // console.log(playerSelectionButton);
+            game(playerSelectionButton);
+        });
+
+        btnPaper.addEventListener('click', () => {
+            playerSelectionButton = 'Paper';
+            // console.log(playerSelectionButton);
+            game(playerSelectionButton);
+        });
+
+        btnScissor.addEventListener('click', () => {
+            playerSelectionButton = 'Scissor';
+            // console.log(playerSelectionButton);
+            game(playerSelectionButton);
+        });
+
+
+
         //let randomNumber = Math.floor(Math.random() * 100) +1; //Generates a random number which will be send to function
         let winCount = 0;
         let lossCount = 0;
+
         // Function that takes the randomly generated number and divides it by 3. 
         // The remainder of that number will return a 'Paper', 'Rock', or 'Scissor'
         function getComputerChoice(numberCheck){
             console.log("Random number is " + numberCheck);
-            let remainder = numberCheck % 3;
-            console.log("Remainder of " + remainder);
-            if (remainder == 1){
+            //let remainder = numberCheck % 3;
+            //console.log("Remainder of " + remainder);
+            if (numberCheck == 1){
                 return 'paper';
             }
-            else if (remainder == 2){
+            else if (numberCheck == 2){
                 return 'rock';
             }
             else {
@@ -34,8 +68,8 @@
         }
         
         function playRound(playerSelection, computerSelection){
-            const playerSelectionCompare = playerSelection.toLowerCase();
-            //console.log(playerSelectionCompare);
+            const playerSelectionCompare = playerSelection//.toLowerCase();
+            ;
             if (playerSelectionCompare == computerSelection){
                 return "You both chose " + playerSelectionCompare + ". It is a tie.";
             }
@@ -64,18 +98,21 @@
 
         }
 
-        function game(){
-            for (let i = 0; i < 5; i++){
-                let playerSelection = prompt ("Paper, Rock, or Scissors");
-                let randomNumber = Math.floor(Math.random() * 100) +1; //Generates a random number which will be send to function
+        function game(buttonSelected){
+            // for (let i = 0; i < 5; i++){
+                let playerSelection = buttonSelected;
+                // let playerSelection = prompt ("Paper, Rock, or Scissors");
+                let randomNumber = Math.floor(Math.random() * 3) +1; //Generates a random number which will be send to function
                 const computerSelection = getComputerChoice(randomNumber); //Sends Random Number to function and returns value of choice based on remainder
                 console.log("Computer selected " + computerSelection);
                 console.log("User Selected " + playerSelection);
                 console.log(playRound(playerSelection, computerSelection));
                 playRound(playerSelection);
             }    
-        }
-        game();
+        //}
+        console.log(playerSelectionButton);
+        //game();
+        
         //function resultsMessage(){
                 if (winCount > lossCount){
                     console.log("You Win!!! You had " + winCount + " wins while the computer won " + lossCount + " round(s)");
